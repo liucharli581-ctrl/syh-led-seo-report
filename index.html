@@ -125,14 +125,14 @@
   .slide.dark .acc-item.open{border-color:rgba(61,158,85,.35)}
   .slide.dark .acc-header:hover{background:rgba(61,158,85,.1)}
   .slide.dark .acc-item.open .acc-header{background:rgba(61,158,85,.12)}
-  .slide.dark .tab-btn:hover{background:rgba(61,158,85,.1)}
+  .slide.dark .tab-btn:hover{background:rgba(61,158,85,.1);box-shadow:0 4px 16px rgba(61,158,85,.12)}
   .slide.dark .acc-inner{border-top-color:rgba(255,255,255,.08)}
   /* ============ 选项卡 ============ */
   .tab-bar{display:flex;gap:0;margin-bottom:1.5vh;border-bottom:1px solid rgba(127,127,127,.2);flex-shrink:0}
-  .tab-btn{font-family:var(--mono);font-size:max(12px,.82vw);letter-spacing:.12em;padding:.7vh 1.4vw;cursor:pointer;border:none;background:none;color:inherit;opacity:.5;border-bottom:2px solid transparent;transition:opacity .3s,border-color .3s,transform .25s,background .25s;margin-bottom:-1px;border-radius:4px 4px 0 0}
-  .tab-btn:hover{opacity:.85;transform:translateY(-2px);background:rgba(61,158,85,.06)}
-  .tab-btn:active{transform:translateY(0)}
-  .tab-btn.active{opacity:1;border-bottom-color:#3d9e55;transform:translateY(-2px)}
+  .tab-btn{font-family:var(--mono);font-size:max(12px,.82vw);letter-spacing:.12em;padding:.7vh 1.4vw;cursor:pointer;border:none;background:none;color:inherit;opacity:.5;border-bottom:2px solid transparent;transition:opacity .3s,border-color .3s,transform .35s cubic-bezier(.34,1.56,.64,1),background .3s,box-shadow .35s cubic-bezier(.34,1.56,.64,1);margin-bottom:-1px;border-radius:6px 6px 0 0}
+  .tab-btn:hover{opacity:1;transform:translateY(-5px);background:rgba(61,158,85,.08);box-shadow:0 4px 16px rgba(61,158,85,.15)}
+  .tab-btn:active{transform:translateY(-1px)}
+  .tab-btn.active{opacity:1;border-bottom-color:#3d9e55;transform:translateY(-3px)}
   .tab-panel{display:none;flex:1;min-height:0;overflow-y:auto}
   .tab-panel.active{display:flex;flex-direction:column}
   .tab-panel::-webkit-scrollbar{width:4px}
@@ -486,6 +486,27 @@
   .scroll-content{overflow-y:auto;flex:1;padding-right:1vw;margin-top:1vh}
   .scroll-content::-webkit-scrollbar{width:4px}
   .scroll-content::-webkit-scrollbar-thumb{background:rgba(127,127,127,.3);border-radius:2px}
+
+  /* ============ 竞品行截图链接 ============ */
+  .shot-link{font-family:var(--mono);font-size:max(9px,.58vw);letter-spacing:.1em;opacity:.45;cursor:pointer;transition:opacity .25s,color .25s;margin-left:.4vw;white-space:nowrap;border-bottom:1px dotted rgba(255,255,255,.2);padding-bottom:1px}
+  .shot-link:hover{opacity:1;color:#3d9e55;border-bottom-color:#3d9e55}
+  .rowline .m{display:flex;align-items:center;gap:.4vw}
+  .shot-link-icon{margin-right:2px;font-size:max(10px,.65vw)}
+  .data-anno{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;opacity:.5;vertical-align:super;cursor:help}
+
+  /* ============ shotView 弹窗 ============ */
+  #shotView{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;flex-direction:column;align-items:center;justify-content:center;padding:4vh 4vw}
+  #shotView.show{display:flex}
+  #shotView .viewer-close{position:absolute;top:3vh;right:3vw;font-family:var(--serif-en);font-size:2.4vw;background:none;border:none;color:#fff;cursor:pointer;opacity:.6;transition:opacity .25s,transform .25s;z-index:10;line-height:1}
+  #shotView .viewer-close:hover{opacity:1;transform:rotate(90deg)}
+  #shotView .viewer-img{max-width:95vw;max-height:85vh;border-radius:6px;box-shadow:0 12px 48px rgba(0,0,0,.5);object-fit:contain;display:block}
+  #shotView .viewer-label{margin-top:2vh;font-family:var(--serif-zh);font-size:max(18px,1.4vw);font-weight:600;color:#fff;opacity:.88;text-align:center}
+  #shotView .viewer-nav{display:flex;align-items:center;gap:2vw;margin-top:1.6vh}
+  #shotView .viewer-nav button{font-family:var(--mono);font-size:max(13px,.85vw);letter-spacing:.16em;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:.5vh 1.4vw;border-radius:4px;cursor:pointer;transition:all .25s}
+  #shotView .viewer-nav button:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4);transform:translateY(-1px)}
+  #shotView .viewer-nav .counter{font-family:var(--mono);font-size:max(13px,.85vw);letter-spacing:.12em;color:rgba(255,255,255,.6)}
+  #shotView .viewer-nav button:disabled{opacity:.3;cursor:default;transform:none}
+  .shot-trigger{font-family:var(--mono);font-size:10px;letter-spacing:.1em;cursor:pointer;opacity:.45;transition:opacity .25s;background:none;border:none;color:inherit;padding:0;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(127,127,127,.3)}
 </style>
 </head>
 <body>
@@ -527,7 +548,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>目录 · Contents</div>
-    <div>02 / 18</div>
+    <div>02 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh; justify-content:center">
     <div class="kicker" data-anim>Table of Contents</div>
@@ -579,7 +600,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>诊断 · Diagnosis</div>
-    <div>03 / 18</div>
+    <div>03 / 17</div>
   </div>
   <div class="frame" style="padding-top:2.5vh">
     <div class="kicker" data-anim>SEO Difficulty · 难度评估</div>
@@ -637,7 +658,7 @@
 <section class="slide dark" id="page-baseline">
   <div class="chrome">
     <div>诊断 · Current Baseline</div>
-    <div>04 / 18</div>
+    <div>04 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>现状 · Current State</div>
@@ -649,6 +670,7 @@
       <button class="tab-btn active" onclick="switchTab(this,'panel-core')">核心指标</button>
       <button class="tab-btn" onclick="switchTab(this,'panel-gaps')">关键缺口</button>
       <button class="tab-btn" onclick="switchTab(this,'panel-audit')">页面审计</button>
+      <button class="tab-btn" onclick="switchTab(this,'panel-backlinks')">外链数据</button>
     </div>
     <!-- Tab 1: 核心指标 -->
     <div class="tab-panel active" id="panel-core" data-anim>
@@ -736,6 +758,44 @@
         </div>
       </div>
     </div>
+    <!-- Tab 4: 外链数据 -->
+    <div class="tab-panel" id="panel-backlinks">
+      <div style="display:flex; flex-direction:column; gap:1.4vh; justify-content:center; flex:1">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5vh 2vw">
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">Referring Domains</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#e67e22">1</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">仅为 1 个引荐域名</div>
+          </div>
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">Vorlane 对比</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#c0392b">~320</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">核心竞品引荐域名</div>
+          </div>
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">ZGSM 对比</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#c0392b">~280</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">同类竞品引荐域名</div>
+          </div>
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">12 月目标</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#3d9e55">80–120</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">季度新增 20–30 个</div>
+          </div>
+        </div>
+        <div style="font-family:var(--sans-zh); font-size:max(13px,.85vw); opacity:.7; line-height:1.6; text-align:center; padding:0.5vh 0">
+          外链是当前最大短板，需从行业目录、B2B 平台、guest post 三大渠道持续建设
+        </div>
+      </div>
+    </div>
   </div>
   <div class="foot">
     <div>SYH LED · 当前站点状态评估</div>
@@ -744,101 +804,138 @@
 </section>
 
 <!-- ================================================================ -->
-<!-- PAGE 4 · 竞争对手全景 -->
-<section class="slide light">
+<!-- PAGE 4 · 竞争对手矩阵（SYHPCB 风格） -->
+<section class="slide dark">
   <div class="chrome">
-    <div>竞争 · Competitors</div>
-    <div>05 / 18</div>
+    <div class="left"><span>竞争</span><span class="sep"></span><span>Competitors</span></div>
+    <div class="right"><span>05 / 17</span></div>
   </div>
-  <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>Landscape · 全景</div>
-    <h2 class="h-xl" data-anim>竞争对手矩阵</h2>
-    <p class="lead" style="max-width:55vw; margin-bottom:2vh" data-anim>核心竞品分三层：直接对标、页面参考、低权重可追机会。</p>
-    <div class="scroll-content" data-anim>
-      <table class="kpi-table" style="width:100%">
-        <thead>
-          <tr>
-            <th>竞品</th>
-            <th>定位</th>
-            <th>DR</th>
-            <th>Org. Keywords</th>
-            <th>参考价值</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="label-cell">Vorlane</td>
-            <td>LED 制造商 · 高端定位</td>
-            <td class="num">52</td>
-            <td class="num">~3,200</td>
-            <td><span class="tag-red">核心对标</span> 内容 + 结构</td>
-          </tr>
-          <tr>
-            <td class="label-cell">ZGSM</td>
-            <td>工业/户外照明中国工厂</td>
-            <td class="num">48</td>
-            <td class="num">~2,800</td>
-            <td><span class="tag-red">核心对标</span> 工程照明 SEO</td>
-          </tr>
-          <tr>
-            <td class="label-cell">GRNLED</td>
-            <td>中国 LED 制造商</td>
-            <td class="num">35</td>
-            <td class="num">~1,900</td>
-            <td><span class="tag-red">页面参考</span> OEM/分类页结构</td>
-          </tr>
-          <tr>
-            <td class="label-cell">XHLUX</td>
-            <td>低权重长尾玩家</td>
-            <td class="num">22</td>
-            <td class="num">~1,200</td>
-            <td><span class="tag-red">可追目标</span> 冷启动参考</td>
-          </tr>
-          <tr>
-            <td class="label-cell">LSI Corp</td>
-            <td>美国商业照明品牌</td>
-            <td class="num">68</td>
-            <td class="num">~5,100</td>
-            <td>场景页参考</td>
-          </tr>
-          <tr>
-            <td class="label-cell">Lithonia</td>
-            <td>美国照明巨头</td>
-            <td class="num">82</td>
-            <td class="num">~18,000</td>
-            <td>品牌词结构参考</td>
-          </tr>
-          <tr>
-            <td class="label-cell">Dialight</td>
-            <td>工业/危险环境照明</td>
-            <td class="num">56</td>
-            <td class="num">~3,800</td>
-            <td>工业照明词参考</td>
-          </tr>
-          <tr>
-            <td class="label-cell">US LED</td>
-            <td>美国 LED 供应商</td>
-            <td class="num">44</td>
-            <td class="num">~2,100</td>
-            <td>应用页参考</td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="kicker" data-anim>Benchmark · 点击行查看截图</div>
+  <div class="h1-zh" data-anim style="font-size:clamp(30px,4.2vw,62px);margin-bottom:0.6vh">竞争对手矩阵</div>
+  <div style="flex:1;display:flex;flex-direction:column;min-height:0" data-anim>
+    <!-- 表头 -->
+    <div class="rowline" style="grid-template-columns:1.2fr 3fr 1fr;border-top-color:rgba(var(--paper-rgb),.15);padding:1.4vh 0">
+      <span class="k" style="font-family:var(--mono);font-size:max(11px,.75vw);letter-spacing:.2em;text-transform:uppercase;opacity:.6">网站</span>
+      <span class="v" style="display:flex;gap:1vw;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.12em;text-transform:uppercase;opacity:.45">
+        <span style="width:3.5vw;text-align:right">DR</span>
+        <span style="width:4.5vw;text-align:right">流量</span>
+        <span style="width:4.5vw;text-align:right">关键词</span>
+        <span style="width:4vw;text-align:right">付费</span>
+        <span style="width:4.5vw;text-align:right">域名</span>
+      </span>
+      <span class="m" style="opacity:.4;font-size:max(10px,.7vw)">层级</span>
     </div>
-    <!-- 竞品 SEMrush 截图（全部可见） -->
-    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8vw; margin-top:0.8vh; flex-shrink:0" data-anim>
-      <div style="text-align:center"><img src="images/vorlane.png" alt="Vorlane" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">VORLANE · DR 52</div></div>
-      <div style="text-align:center"><img src="images/zgsm-china.png" alt="ZGSM" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">ZGSM · DR 48</div></div>
-      <div style="text-align:center"><img src="images/grnled.png" alt="GRNLED" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">GRNLED · DR 35</div></div>
-      <div style="text-align:center"><img src="images/xhlux.png" alt="XHLUX" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">XHLUX · DR 22</div></div>
-      <div style="text-align:center"><img src="images/lsicorp.png" alt="LSI Corp" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">LSI CORP · DR 68</div></div>
-      <div style="text-align:center"><img src="images/lithonia.png" alt="Lithonia" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">LITHONIA · DR 82</div></div>
-      <div style="text-align:center"><img src="images/dialight.png" alt="Dialight" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">DIALIGHT · DR 56</div></div>
-      <div style="text-align:center"><img src="images/usled.png" alt="US LED" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">US LED · DR 44</div></div>
+    <!-- SYH LED 当前 -->
+    <div class="rowline competitor-row" data-comp="0" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">SYH LED <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">2</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700;opacity:.5">~0</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700;opacity:.5">0</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700;opacity:.5">0</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">1</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#3d9e55">当前</span>
+    </div>
+    <!-- Vorlane -->
+    <div class="rowline competitor-row" data-comp="1" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">Vorlane <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">52</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">3,200</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">4,800</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">12</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">320</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#e67e22">核心</span>
+    </div>
+    <!-- ZGSM -->
+    <div class="rowline competitor-row" data-comp="2" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">ZGSM <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">48</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">2,800</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">4,200</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">8</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">280</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#e67e22">核心</span>
+    </div>
+    <!-- GRNLED -->
+    <div class="rowline competitor-row" data-comp="3" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">GRNLED <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">35</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">1,900</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">2,800</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">5</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">180</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#3498db">参考</span>
+    </div>
+    <!-- XHLUX -->
+    <div class="rowline competitor-row" data-comp="4" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">XHLUX <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">22</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">1,200</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">1,800</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">3</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">120</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#2ecc71">可追</span>
+    </div>
+    <!-- LSI Corp -->
+    <div class="rowline competitor-row" data-comp="5" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">LSI Corp <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">68</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">5,100</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">7,500</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">25</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">480</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#9b59b6">巨头</span>
+    </div>
+    <!-- Lithonia -->
+    <div class="rowline competitor-row" data-comp="6" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">Lithonia <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">82</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">18,000</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">25,000</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">60</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">1,200</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#9b59b6">巨头</span>
+    </div>
+    <!-- Dialight -->
+    <div class="rowline competitor-row" data-comp="7" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">Dialight <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">56</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">3,800</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">5,500</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">15</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">350</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#e67e22">工业</span>
+    </div>
+    <!-- US LED -->
+    <div class="rowline competitor-row" data-comp="8" style="grid-template-columns:1.2fr 3fr 1fr;cursor:pointer;padding:1.6vh 0">
+      <span class="k" style="font-size:max(15px,1.2vw)">US LED <span class="shot-link">截图</span></span>
+      <span class="v" style="display:flex;gap:1vw;font-feature-settings:'tnum';font-size:max(14px,1.05vw)">
+        <span style="width:3.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">44</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">2,100</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">3,200</span>
+        <span style="width:4vw;text-align:right;font-family:var(--serif-en);font-weight:700">7</span>
+        <span style="width:4.5vw;text-align:right;font-family:var(--serif-en);font-weight:700">220</span>
+      </span>
+      <span class="m" style="opacity:.8;font-family:var(--mono);font-size:max(10px,.7vw);letter-spacing:.15em;text-transform:uppercase;color:#3498db">应用</span>
     </div>
   </div>
-  <div class="foot">
-    <div>数据来源：SEMrush · 2026.07</div>
+  <div class="foot" style="margin-top:1.2vh">
+    <div>Source: SEMrush · 点击行末「截图」查看对应来源大图</div>
     <div>Act I · Competitors</div>
   </div>
 </section>
@@ -848,7 +945,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>诊断 · Business Fit</div>
-    <div>06 / 18</div>
+    <div>06 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Business Fit · 业务契合度</div>
@@ -901,7 +998,7 @@
 <section class="slide dark">
   <div class="chrome">
     <div>旅程 · Customer Journey</div>
-    <div>07 / 18</div>
+    <div>07 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>B2B Customer Journey</div>
@@ -985,7 +1082,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>第二幕 · 关键词集群</div>
-    <div>08 / 18</div>
+    <div>08 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Keyword Cluster · 集群</div>
@@ -1193,7 +1290,7 @@
 <section class="slide dark">
   <div class="chrome">
     <div>第二幕 · 核心关键词</div>
-    <div>09 / 18</div>
+    <div>09 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Top B2B Keywords</div>
@@ -1251,7 +1348,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>第二幕 · SEM 策略</div>
-    <div>10 / 18</div>
+    <div>10 / 17</div>
   </div>
   <div class="frame" style="padding-top:4vh">
     <div class="kicker" data-anim>SEM · Google Ads</div>
@@ -1292,7 +1389,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>内容 · Content Priority</div>
-    <div>11 / 18</div>
+    <div>11 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Content Priority Map</div>
@@ -1348,7 +1445,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>第三幕 · 内容战略</div>
-    <div>12 / 18</div>
+    <div>12 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Content Strategy</div>
@@ -1452,7 +1549,7 @@
 <section class="slide dark">
   <div class="chrome">
     <div>第三幕 · KPI 目标</div>
-    <div>13 / 18</div>
+    <div>13 / 17</div>
   </div>
   <div class="frame" style="padding-top:4vh">
     <div class="kicker" data-anim>KPI Targets · 未来 12 个月</div>
@@ -1546,85 +1643,12 @@
 </section>
 
 <!-- ================================================================ -->
-<!-- PAGE 12 · 竞品 SEMrush 截图 -->
-<section class="slide light">
-  <div class="chrome">
-    <div>第三幕 · 竞品实证</div>
-    <div>14 / 18</div>
-  </div>
-  <div class="frame" style="padding-top:3vh">
-    <div class="kicker" data-anim>SEMrush Screenshots</div>
-    <h2 class="h-xl" data-anim>竞品 SEMrush 数据</h2>
-    <p class="lead" style="max-width:55vw; margin-bottom:1.5vh" data-anim>核心竞品的流量、关键词、域名评级全景对比。</p>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2vh 1.2vw; flex:1; align-content:start">
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/vorlane.png" alt="Vorlane SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">Vorlane</span><span class="nb">DR 52</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/zgsm-china.png" alt="ZGSM SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">ZGSM</span><span class="nb">DR 48</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/grnled.png" alt="GRNLED SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">GRNLED</span><span class="nb">DR 35</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/xhlux.png" alt="XHLUX SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">XHLUX</span><span class="nb">DR 22</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/lithonia.png" alt="Lithonia SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">Lithonia</span><span class="nb">DR 82</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/lsicorp.png" alt="LSI Corp SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">LSI Corp</span><span class="nb">DR 68</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/dialight.png" alt="Dialight SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">Dialight</span><span class="nb">DR 56</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/usled.png" alt="US LED SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">US LED</span><span class="nb">DR 44</span></figcaption>
-      </figure>
-      <figure class="tile" data-anim>
-        <div class="frame-img h-22">
-          <img src="images/syhledray.com.png" alt="SYH LED SEMrush">
-        </div>
-        <figcaption class="frame-cap"><span class="pf">SYH LEDRAY</span><span class="nb">当前</span></figcaption>
-      </figure>
-    </div>
-  </div>
-  <div class="foot">
-    <div>截图来源：SEMrush · 2026.07</div>
-    <div>Act III · Screenshots</div>
-  </div>
-</section>
-
 <!-- ================================================================ -->
 <!-- PAGE 13 · SYH 网站数据面板（交互） -->
 <section class="slide hero light">
   <div class="chrome">
     <div>SYH 数据面板</div>
-    <div>15 / 18</div>
+    <div>14 / 17</div>
   </div>
   <div class="frame" style="padding-top:5vh">
     <div class="kicker" data-anim>Live Data · 交互式数据</div>
@@ -1654,7 +1678,7 @@
 <section class="slide dark">
   <div class="chrome">
     <div>执行指南 · Playbook</div>
-    <div>16 / 18</div>
+    <div>15 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Execution Guide</div>
@@ -1723,7 +1747,7 @@
 <section class="slide light">
   <div class="chrome">
     <div>路线图 · Roadmap</div>
-    <div>17 / 18</div>
+    <div>16 / 17</div>
   </div>
   <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>Roadmap · 2026.07 → 2027.06</div>
@@ -1742,12 +1766,12 @@
             <div class="rd-label">Top 2 页</div>
           </div>
           <div class="rd-item">
-            <div class="rd-nb">80–120</div>
+            <div class="rd-nb">150</div>
             <div class="rd-label">外链域名</div>
           </div>
           <div class="rd-item">
-            <div class="rd-nb">48–60</div>
-            <div class="rd-label">内容篇数</div>
+            <div class="rd-nb">60</div>
+            <div class="rd-label">博客篇数</div>
           </div>
           <div class="rd-item">
             <div class="rd-nb">10–15</div>
@@ -1759,7 +1783,7 @@
           </div>
         </div>
         <div class="rd-summary">
-          从 0 到 300+ 关键词 · 内容 + 外链 + SEM 三位一体增长引擎
+          从 0 到 300+ 关键词 · 150 外链域名 · 60 篇博客 · 三位一体增长引擎
         </div>
       </div>
       <!-- 右侧：路线 从下到上 -->
@@ -1831,13 +1855,13 @@
 <section class="slide hero dark">
   <div class="chrome">
     <div>总结 · Summary</div>
-    <div>18 / 18</div>
+    <div>17 / 17</div>
   </div>
   <div class="frame" style="display:grid; gap:5vh; align-content:center; min-height:80vh">
     <div class="kicker" data-anim>Takeaway</div>
     <h1 class="h-hero" style="font-size:8vw; line-height:1.1">
       <span data-anim style="display:block">从 0 到 300+ 关键词</span>
-      <span data-anim style="display:block">到 <span class="accent-red">100+ 外链域名</span></span>
+      <span data-anim style="display:block">到 <span class="accent-red">150 外链域名</span></span>
     </h1>
     <p class="lead" style="max-width:50vw" data-anim>
       B2B 照明 SEO 不是一蹴而就，但每一步都有清晰路径。<br>
@@ -1860,9 +1884,73 @@
 
 </div>
 
+<div id="shotView">
+  <button class="viewer-close" id="shotClose">×</button>
+  <img class="viewer-img" id="shotImg" alt="Competitor screenshot">
+  <div class="viewer-label" id="shotLabel"></div>
+  <div class="viewer-nav">
+    <button id="shotPrev">← 上一张</button>
+    <span class="counter" id="shotCounter"></span>
+    <button id="shotNext">下一张 →</button>
+  </div>
+</div>
+
 <div id="nav"></div>
 
 <script>
+/* =============== shotView 竞品截图查看器 =============== */
+const competitors=[
+  {name:'SYH LED — 当前状态', file:'syhledray.com.png'},
+  {name:'Vorlane — LED 制造商', file:'vorlane.png'},
+  {name:'ZGSM — 中国工业照明工厂', file:'zgsm-china.png'},
+  {name:'GRNLED — 中国 LED 制造商', file:'grnled.png'},
+  {name:'XHLUX — 低权重长尾玩家', file:'xhlux.png'},
+  {name:'LSI Corp — 美国商业照明', file:'lsicorp.png'},
+  {name:'Lithonia — 照明巨头', file:'lithonia.png'},
+  {name:'Dialight — 工业危险环境照明', file:'dialight.png'},
+  {name:'US LED — 美国 LED 供应商', file:'usled.png'}
+];
+const SHOT_PATH='images/';
+const view=document.getElementById('shotView');
+const img=document.getElementById('shotImg');
+const label=document.getElementById('shotLabel');
+const counter=document.getElementById('shotCounter');
+const close=document.getElementById('shotClose');
+const prev=document.getElementById('shotPrev');
+const next=document.getElementById('shotNext');
+let curIdx=0;
+
+function showShot(i){
+  if(i<0||i>=competitors.length) return;
+  curIdx=i;
+  img.src=SHOT_PATH+competitors[i].file;
+  img.onerror=function(){this.src='';this.alt='截图加载失败';};
+  label.textContent=competitors[i].name;
+  counter.textContent=(i+1)+'/'+competitors.length;
+  prev.disabled=i===0;
+  next.disabled=i===competitors.length-1;
+  view.classList.add('show');
+}
+
+document.querySelectorAll('.shot-link').forEach(el=>{
+  el.addEventListener('click',function(e){
+    e.stopPropagation();
+    const row=this.closest('.competitor-row');
+    const i=parseInt(row.getAttribute('data-comp'));
+    if(!isNaN(i)) showShot(i);
+  });
+});
+
+close.addEventListener('click',()=>view.classList.remove('show'));
+prev.addEventListener('click',()=>showShot(curIdx-1));
+next.addEventListener('click',()=>showShot(curIdx+1));
+document.addEventListener('keydown',e=>{
+  if(!view.classList.contains('show')) return;
+  if(e.key==='Escape'){view.classList.remove('show');return;}
+  if(e.key==='ArrowLeft'){showShot(curIdx-1);return;}
+  if(e.key==='ArrowRight'){showShot(curIdx+1);}
+});
+view.addEventListener('click',function(e){if(e.target===this)this.classList.remove('show')});
 /* =============== 交互式数据面板 =============== */
 const DATA = {
   'kw-data': `<table class="data-table">
