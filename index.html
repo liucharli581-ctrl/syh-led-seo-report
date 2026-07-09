@@ -112,6 +112,29 @@
   .modal-close:hover{opacity:1}
   .modal-label{position:absolute;bottom:-3.2vh;left:0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--paper);opacity:.55}
   .label-cell{cursor:pointer;transition:color .25s;position:relative}
+  /* ============ 关键词手风琴 ============ */
+  .accordion{display:flex;flex-direction:column;gap:2px}
+  .acc-item{border:1px solid rgba(13,31,20,.1);border-radius:6px;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+  .acc-item.open{border-color:rgba(45,138,78,.3);box-shadow:0 2px 12px rgba(45,138,78,.08)}
+  .acc-header{display:flex;justify-content:space-between;align-items:center;padding:.7vh 1vw;cursor:pointer;transition:background .25s;user-select:none}
+  .acc-header:hover{background:rgba(45,138,78,.06)}
+  .acc-item.open .acc-header{background:rgba(45,138,78,.08)}
+  .acc-header .name{font-family:var(--sans-zh);font-weight:500;font-size:max(13px,0.95vw);letter-spacing:.02em}
+  .acc-header .val{font-family:var(--serif-en);font-weight:700;font-size:max(15px,1.15vw);font-feature-settings:"tnum"}
+  .acc-icon{font-family:var(--serif-en);font-size:max(16px,1.2vw);font-weight:300;opacity:.5;transition:transform .35s ease;line-height:1}
+  .acc-item.open .acc-icon{transform:rotate(45deg);opacity:.8}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.16,1,.3,1)}
+  .acc-item.open .acc-body{max-height:320px}
+  .acc-inner{padding:.4vh 1vw 1.2vh 1vw;border-top:1px solid rgba(13,31,20,.06)}
+  .acc-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;opacity:.5;margin-bottom:.6vh}
+  .kw-tag{display:inline-block;font-family:var(--mono);font-size:max(11px,.78vw);background:rgba(13,31,20,.05);border-radius:4px;padding:.2vh .6vw;margin:.18vh .3vw .18vh 0;white-space:nowrap}
+  .kw-tag em{font-family:var(--serif-en);font-style:italic;font-weight:600;font-size:max(10px,.72vw);opacity:.65;margin-left:.15vw}
+  .slide.dark .kw-tag{background:rgba(255,255,255,.08)}
+  .slide.dark .acc-item{border-color:rgba(255,255,255,.15)}
+  .slide.dark .acc-item.open{border-color:rgba(61,158,85,.35)}
+  .slide.dark .acc-header:hover{background:rgba(61,158,85,.1)}
+  .slide.dark .acc-item.open .acc-header{background:rgba(61,158,85,.12)}
+  .slide.dark .acc-inner{border-top-color:rgba(255,255,255,.08)}
   .label-cell::after{content:"";position:absolute;left:0;bottom:2px;width:0;height:1px;background:currentColor;transition:width .3s ease}
   .label-cell:hover{color:#2d8a4e}
   .label-cell:hover::after{width:100%}
@@ -902,21 +925,189 @@
     <h2 class="h-xl" data-anim>14 大产品关键词集群</h2>
     <p class="lead" style="max-width:60vw; margin-bottom:0.5vh" data-anim>覆盖 B2B 采购全链路：制造商词 → 产品词 → 场景词</p>
     <div class="scroll-content" data-anim>
-      <div class="cluster-grid">
-        <div class="cluster-item"><span class="name">LED Manufacturer / Supplier</span><span class="val" style="color:#2d8a4e">1,119</span></div>
-        <div class="cluster-item"><span class="name">General LED Lighting</span><span class="val">661</span></div>
-        <div class="cluster-item"><span class="name">LED Outdoor Lighting</span><span class="val" style="color:#2d8a4e">486</span></div>
-        <div class="cluster-item"><span class="name">LED Flood / Parking Lot</span><span class="val">375</span></div>
-        <div class="cluster-item"><span class="name">LED High Bay Lights</span><span class="val" style="color:#2d8a4e">136</span></div>
-        <div class="cluster-item"><span class="name">LED Street Lights</span><span class="val">130</span></div>
-        <div class="cluster-item"><span class="name">LED Commercial Lighting</span><span class="val">114</span></div>
-        <div class="cluster-item"><span class="name">LED Canopy Lights</span><span class="val">62</span></div>
-        <div class="cluster-item"><span class="name">LED Downlights / Ceiling</span><span class="val">160</span></div>
-        <div class="cluster-item"><span class="name">LED Tube Lights</span><span class="val">62</span></div>
-        <div class="cluster-item"><span class="name">LED Industrial Lighting</span><span class="val">49</span></div>
-        <div class="cluster-item"><span class="name">LED Track Lights</span><span class="val">27</span></div>
-        <div class="cluster-item"><span class="name">LED Linear Lights</span><span class="val">24</span></div>
-        <div class="cluster-item"><span class="name">LED Panel / Troffer</span><span class="val">23</span></div>
+      <div class="accordion" id="kw-accordion">
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Manufacturer / Supplier</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val" style="color:#2d8a4e">1,119</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led light manufacturer <em>4,400</em></span>
+            <span class="kw-tag">led light suppliers <em>1,600</em></span>
+            <span class="kw-tag">led light wholesale <em>1,300</em></span>
+            <span class="kw-tag">led lighting factory <em>1,000</em></span>
+            <span class="kw-tag">led light factory <em>1,000</em></span>
+            <span class="kw-tag">led light distributor <em>480</em></span>
+            <span class="kw-tag">led light china <em>320</em></span>
+            <span class="kw-tag">led light custom <em>590</em></span>
+            <span class="kw-tag">industrial led lighting manufacturers china <em>590</em></span>
+            <span class="kw-tag">led light manufacturers <em>390</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">General LED Lighting</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">661</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led lighting solutions <em>2,900</em></span>
+            <span class="kw-tag">commercial led lighting <em>2,900</em></span>
+            <span class="kw-tag">commercial led lights <em>880</em></span>
+            <span class="kw-tag">led lighting solutions for commercial buildings <em>—</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Outdoor Lighting</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val" style="color:#2d8a4e">486</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led parking lot light fixtures <em>1,000</em></span>
+            <span class="kw-tag">commercial led flood lights <em>480</em></span>
+            <span class="kw-tag">led flood lights manufacturers <em>390</em></span>
+            <span class="kw-tag">led flood light manufacturer <em>390</em></span>
+            <span class="kw-tag">led flood light suppliers <em>390</em></span>
+            <span class="kw-tag">commercial exterior led lighting fixtures <em>320</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Flood / Parking Lot</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">375</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led flood lights factories <em>390</em></span>
+            <span class="kw-tag">led flood lights wholesale <em>30</em></span>
+            <span class="kw-tag">led flood lights china <em>40</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED High Bay Lights</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val" style="color:#2d8a4e">136</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">industrial led high bay lighting <em>1,600</em></span>
+            <span class="kw-tag">high bay led light fixtures <em>390</em></span>
+            <span class="kw-tag">led warehouse lighting high bay <em>260</em></span>
+            <span class="kw-tag">led high bay light manufacturer <em>140</em></span>
+            <span class="kw-tag">led high bay light supplier <em>10</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Street Lights</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">130</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led street light manufacturer <em>—</em></span>
+            <span class="kw-tag">led street light suppliers <em>—</em></span>
+            <span class="kw-tag">led street light wholesale <em>—</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Commercial Lighting</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">114</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">commercial led lighting <em>2,900</em></span>
+            <span class="kw-tag">commercial led lights <em>880</em></span>
+            <span class="kw-tag">commercial exterior led lighting fixtures <em>320</em></span>
+            <span class="kw-tag">led canopy light fixtures <em>260</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Canopy Lights</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">62</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led canopy lights manufacturer <em>20</em></span>
+            <span class="kw-tag">led canopy lights suppliers <em>10</em></span>
+            <span class="kw-tag">led canopy lights factory <em>10</em></span>
+            <span class="kw-tag">led canopy lights wholesale <em>10</em></span>
+            <span class="kw-tag">led canopy lights distributor <em>—</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Downlights / Ceiling</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">160</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led downlights manufacturers <em>70</em></span>
+            <span class="kw-tag">led downlights wholesale <em>50</em></span>
+            <span class="kw-tag">led downlights suppliers <em>10</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Tube Lights</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">62</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led tube light manufacturer <em>—</em></span>
+            <span class="kw-tag">led tube light suppliers <em>—</em></span>
+            <span class="kw-tag">led tube light wholesale <em>—</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Industrial Lighting</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">49</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">industrial led lighting manufacturers china <em>590</em></span>
+            <span class="kw-tag">industrial led lighting solutions <em>70</em></span>
+            <span class="kw-tag">industrial led lighting suppliers <em>70</em></span>
+            <span class="kw-tag">industrial led lighting manufacturers <em>10</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Track Lights</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">27</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led track light manufacturer <em>—</em></span>
+            <span class="kw-tag">led track light suppliers <em>—</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Linear Lights</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">24</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led linear light manufacturer <em>—</em></span>
+            <span class="kw-tag">led linear light suppliers <em>—</em></span>
+          </div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="name">LED Panel / Troffer</span>
+            <span style="display:flex; align-items:center; gap:0.6vw"><span class="meta" style="font-size:9px; opacity:.4; text-transform:none">关键词</span><span class="val">23</span><span class="acc-icon">+</span></span>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="acc-label">B2B 关键词 <span style="opacity:.4; font-weight:400">(月搜索量)</span></div>
+            <span class="kw-tag">led panel light manufacturer <em>—</em></span>
+            <span class="kw-tag">led troffer manufacturer <em>—</em></span>
+          </div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1940,6 +2131,15 @@ if(motion){
   window.__playSlide = playSlide;
   window.__pipeAdvance = pipeAdvance;
 
+  /* 关键词手风琴 */
+  window.toggleAcc = function(el){
+    const item = el.closest('.acc-item');
+    if(!item) return;
+    const wasOpen = item.classList.contains('open');
+    // 关闭其他
+    item.closest('.accordion').querySelectorAll('.acc-item.open').forEach(function(i){ i.classList.remove('open'); });
+    if(!wasOpen) item.classList.add('open');
+  };
   /* 竞品截图弹窗 */
   window.openModal = function(src, label){
     const overlay = document.getElementById('modal-overlay');
