@@ -100,7 +100,7 @@
   .slide.dark .callout{background:rgba(var(--paper-rgb),.06)}
   .callout .cite{display:block;margin-top:1.6vh;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
   .callout .q-big{font-family:var(--serif-zh);font-weight:600;font-size:max(18px,1.6vw);line-height:1.42}
-  .diff-item{display:flex;gap:1vw;align-items:flex-start;font-family:var(--sans-zh);font-size:max(14px,1.02vw);line-height:1.55;opacity:.88;padding:.6vh 0}
+  .diff-item{display:flex;gap:0.8vw;align-items:flex-start;font-family:var(--sans-zh);font-size:max(13px,0.92vw);line-height:1.5;opacity:.86;padding:0.5vh 0}
   .diff-dot{min-width:10px;width:10px;height:10px;border-radius:50%;margin-top:.6vh;flex-shrink:0}
 
   .plat{display:flex;flex-direction:column;justify-content:flex-end;padding:2vh 0;border-top:1px solid currentColor;border-color:rgba(127,127,127,.35)}
@@ -523,65 +523,49 @@
     <div>诊断 · Diagnosis</div>
     <div>03 / 18</div>
   </div>
-  <div class="frame" style="padding-top:3vh">
+  <div class="frame" style="padding-top:2.5vh">
     <div class="kicker" data-anim>SEO Difficulty · 难度评估</div>
-    <h2 class="h-xl" data-anim>SEO 难度：<span style="color:#c0392b">7.5</span> / 10 · SEM 难度：<span style="color:#e67e22">7</span> / 10</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3vw; flex:1; align-content:start; margin-top:1vh" data-anim>
-      <!-- 左：SEO 难点 -->
-      <div style="display:flex; flex-direction:column; gap:1.6vh">
-        <div style="font-family:var(--serif-zh); font-weight:600; font-size:1.8vw; margin-bottom:0.6vh">SEO 难点</div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#c0392b"></div>
-          <div><strong>当前基础弱</strong> — DR / AS 极低，关键词几乎为空</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#c0392b"></div>
-          <div><strong>行业竞争成熟</strong> — LED manufacturer、commercial lighting、industrial lighting 已有成熟竞品</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#c0392b"></div>
-          <div><strong>泛词竞争强</strong> — led lights、led lighting 等泛词不适合冷启动直接抢</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#e67e22"></div>
-          <div><strong>页面质量需重建</strong> — 需要清理测试页、重复页、内容不匹配问题</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#e67e22"></div>
-          <div><strong>外链差距明显</strong> — 主竞品引荐域名多在 700–1,500+</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#e67e22"></div>
-          <div><strong>内容门槛中等</strong> — 需要懂产品参数、应用场景、工程采购逻辑</div>
-        </div>
+    <h2 class="h-xl" data-anim>竞争烈度评估</h2>
+    <!-- 分数徽章 -->
+    <div style="display:flex; gap:1.5vw; margin:1.2vh 0 0.5vh 0" data-anim>
+      <div style="display:flex; align-items:center; gap:0.8vw; border:1px solid rgba(13,31,20,.18); border-radius:8px; padding:0.8vh 1.2vw">
+        <div style="font-family:var(--serif-en); font-weight:800; font-size:2.2vw; color:#c0392b; line-height:1">7.5</div>
+        <div style="font-size:1.1vw; opacity:.6">/ 10</div>
+        <div style="font-family:var(--sans-zh); font-size:max(13px,.95vw); opacity:.75; margin-left:0.3vw">SEO 难度</div>
       </div>
-      <!-- 右：SEM 难点 -->
-      <div style="display:flex; flex-direction:column; gap:1.6vh">
-        <div style="font-family:var(--serif-zh); font-weight:600; font-size:1.8vw; margin-bottom:0.6vh">SEM 难点</div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#c0392b"></div>
-          <div><strong>泛词浪费预算</strong> — led lights 容易带来 C 端或零售流量</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#c0392b"></div>
-          <div><strong>需要精准否词</strong> — home、room、bedroom、amazon、repair、DIY 等需排除</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#e67e22"></div>
-          <div><strong>高价值词点击成本可能偏高</strong> — manufacturer、supplier、commercial 类词需要精细分组</div>
-        </div>
-        <div class="diff-item">
-          <div class="diff-dot" style="background:#e67e22"></div>
-          <div><strong>转化页需先优化</strong> — 广告不能直接导向薄弱产品页</div>
-        </div>
+      <div style="display:flex; align-items:center; gap:0.8vw; border:1px solid rgba(13,31,20,.18); border-radius:8px; padding:0.8vh 1.2vw">
+        <div style="font-family:var(--serif-en); font-weight:800; font-size:2.2vw; color:#e67e22; line-height:1">7</div>
+        <div style="font-size:1.1vw; opacity:.6">/ 10</div>
+        <div style="font-family:var(--sans-zh); font-size:max(13px,.95vw); opacity:.75; margin-left:0.3vw">SEM 难度</div>
+      </div>
+    </div>
+    <!-- 难点列表 -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2.5vw; flex:1; min-height:0" data-anim>
+      <!-- SEO 难点 -->
+      <div class="scroll-content" style="flex:none">
+        <div style="font-family:var(--serif-zh); font-weight:600; font-size:1.6vw; margin-bottom:0.8vh">SEO 难点</div>
+        <div class="diff-item"><div class="diff-dot" style="background:#c0392b"></div><div><strong>当前基础弱</strong> — DR / AS 极低，关键词几乎为空</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#c0392b"></div><div><strong>行业竞争成熟</strong> — LED manufacturer、commercial lighting、industrial lighting 已有成熟竞品</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#c0392b"></div><div><strong>泛词竞争强</strong> — led lights、led lighting 等泛词不适合冷启动直接抢</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#e67e22"></div><div><strong>页面质量需重建</strong> — 需要清理测试页、重复页、内容不匹配问题</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#e67e22"></div><div><strong>外链差距明显</strong> — 主竞品引荐域名多在 700–1,500+</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#e67e22"></div><div><strong>内容门槛中等</strong> — 需要懂产品参数、应用场景、工程采购逻辑</div></div>
+      </div>
+      <!-- SEM 难点 -->
+      <div class="scroll-content" style="flex:none">
+        <div style="font-family:var(--serif-zh); font-weight:600; font-size:1.6vw; margin-bottom:0.8vh">SEM 难点</div>
+        <div class="diff-item"><div class="diff-dot" style="background:#c0392b"></div><div><strong>泛词浪费预算</strong> — led lights 容易带来 C 端或零售流量</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#c0392b"></div><div><strong>需要精准否词</strong> — home、room、bedroom、amazon、repair、DIY 等需排除</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#e67e22"></div><div><strong>高价值词点击成本可能偏高</strong> — manufacturer、supplier、commercial 类词需要精细分组</div></div>
+        <div class="diff-item"><div class="diff-dot" style="background:#e67e22"></div><div><strong>转化页需先优化</strong> — 广告不能直接导向薄弱产品页</div></div>
       </div>
     </div>
     <!-- 破局关键 -->
-    <div class="callout" style="margin-top:2vh; padding:2vh 2.4vw" data-anim>
-      <div style="font-family:var(--serif-zh); font-weight:600; font-size:1.4vw; margin-bottom:0.8vh">破局关键</div>
-      <p style="font-family:var(--sans-zh); font-size:max(14px,1.05vw); line-height:1.7; opacity:.85">
-        内容体系重构 + 产品页 SEO + 工程场景页 + 精准 SEM 测试 + 基础外链建设
-      </p>
+    <div class="callout" style="margin-top:0.8vh; padding:1.4vh 2vw; border-left-color:#2d8a4e; flex-shrink:0" data-anim>
+      <div style="display:flex; align-items:center; gap:1vw">
+        <span style="font-family:var(--serif-zh); font-weight:600; font-size:max(14px,1.1vw); white-space:nowrap">破局关键</span>
+        <span style="font-family:var(--sans-zh); font-size:max(13px,.95vw); line-height:1.6; opacity:.82">内容体系重构 + 产品页 SEO + 工程场景页 + 精准 SEM 测试 + 基础外链建设</span>
+      </div>
     </div>
   </div>
   <div class="foot">
