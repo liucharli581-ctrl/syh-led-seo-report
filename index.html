@@ -102,15 +102,6 @@
   .callout .q-big{font-family:var(--serif-zh);font-weight:600;font-size:max(18px,1.6vw);line-height:1.42}
   .diff-item{display:flex;gap:0.8vw;align-items:flex-start;font-family:var(--sans-zh);font-size:max(13px,0.92vw);line-height:1.5;opacity:.86;padding:0.5vh 0}
   .diff-dot{min-width:10px;width:10px;height:10px;border-radius:50%;margin-top:.6vh;flex-shrink:0}
-  /* ============ 竞品截图弹窗 ============ */
-  .modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(var(--ink-rgb),.85);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;backdrop-filter:blur(8px)}
-  .modal-overlay.active{opacity:1;pointer-events:auto}
-  .modal-overlay .modal-wrap{position:relative;max-width:80vw;max-height:85vh;transform:scale(.92);transition:transform .35s cubic-bezier(.16,1,.3,1)}
-  .modal-overlay.active .modal-wrap{transform:scale(1)}
-  .modal-overlay img{max-width:80vw;max-height:80vh;border-radius:8px;box-shadow:0 24px 80px rgba(0,0,0,.5);display:block}
-  .modal-close{position:absolute;top:-3.2vh;right:0;background:none;border:none;color:var(--paper);font-family:var(--mono);font-size:13px;letter-spacing:.2em;cursor:pointer;opacity:.7;transition:opacity .25s;padding:.4vh .8vw}
-  .modal-close:hover{opacity:1}
-  .modal-label{position:absolute;bottom:-3.2vh;left:0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--paper);opacity:.55}
   .label-cell{cursor:pointer;transition:color .25s;position:relative}
   /* ============ 关键词手风琴 ============ */
   .accordion{display:flex;flex-direction:column;gap:2px}
@@ -774,56 +765,56 @@
         </thead>
         <tbody>
           <tr>
-            <td class="label-cell" onclick="openModal('images/vorlane.png','Vorlane · DR 52')">Vorlane</td>
+            <td class="label-cell">Vorlane</td>
             <td>LED 制造商 · 高端定位</td>
             <td class="num">52</td>
             <td class="num">~3,200</td>
             <td><span class="tag-red">核心对标</span> 内容 + 结构</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/zgsm-china.png','ZGSM · DR 48')">ZGSM</td>
+            <td class="label-cell">ZGSM</td>
             <td>工业/户外照明中国工厂</td>
             <td class="num">48</td>
             <td class="num">~2,800</td>
             <td><span class="tag-red">核心对标</span> 工程照明 SEO</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/grnled.png','GRNLED · DR 35')">GRNLED</td>
+            <td class="label-cell">GRNLED</td>
             <td>中国 LED 制造商</td>
             <td class="num">35</td>
             <td class="num">~1,900</td>
             <td><span class="tag-red">页面参考</span> OEM/分类页结构</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/xhlux.png','XHLUX · DR 22')">XHLUX</td>
+            <td class="label-cell">XHLUX</td>
             <td>低权重长尾玩家</td>
             <td class="num">22</td>
             <td class="num">~1,200</td>
             <td><span class="tag-red">可追目标</span> 冷启动参考</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/lsicorp.png','LSI Corp · DR 68')">LSI Corp</td>
+            <td class="label-cell">LSI Corp</td>
             <td>美国商业照明品牌</td>
             <td class="num">68</td>
             <td class="num">~5,100</td>
             <td>场景页参考</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/lithonia.png','Lithonia · DR 82')">Lithonia</td>
+            <td class="label-cell">Lithonia</td>
             <td>美国照明巨头</td>
             <td class="num">82</td>
             <td class="num">~18,000</td>
             <td>品牌词结构参考</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/dialight.png','Dialight · DR 56')">Dialight</td>
+            <td class="label-cell">Dialight</td>
             <td>工业/危险环境照明</td>
             <td class="num">56</td>
             <td class="num">~3,800</td>
             <td>工业照明词参考</td>
           </tr>
           <tr>
-            <td class="label-cell" onclick="openModal('images/usled.png','US LED · DR 44')">US LED</td>
+            <td class="label-cell">US LED</td>
             <td>美国 LED 供应商</td>
             <td class="num">44</td>
             <td class="num">~2,100</td>
@@ -832,24 +823,16 @@
         </tbody>
       </table>
     </div>
-    <!-- SEMrush 竞品数据截图 -->
-    <div style="display:flex; gap:0.8vw; margin-top:0.6vh; flex-shrink:0" data-anim>
-      <div style="flex:1; text-align:center">
-        <img src="images/vorlane.png" alt="Vorlane" style="width:100%; border-radius:4px; display:block">
-        <div style="font-family:var(--mono); font-size:9px; margin-top:0.3vh; opacity:.55; letter-spacing:.12em">VORLANE · DR 52</div>
-      </div>
-      <div style="flex:1; text-align:center">
-        <img src="images/zgsm-china.png" alt="ZGSM" style="width:100%; border-radius:4px; display:block">
-        <div style="font-family:var(--mono); font-size:9px; margin-top:0.3vh; opacity:.55; letter-spacing:.12em">ZGSM · DR 48</div>
-      </div>
-      <div style="flex:1; text-align:center">
-        <img src="images/grnled.png" alt="GRNLED" style="width:100%; border-radius:4px; display:block">
-        <div style="font-family:var(--mono); font-size:9px; margin-top:0.3vh; opacity:.55; letter-spacing:.12em">GRNLED · DR 35</div>
-      </div>
-      <div style="flex:1; text-align:center">
-        <img src="images/xhlux.png" alt="XHLUX" style="width:100%; border-radius:4px; display:block">
-        <div style="font-family:var(--mono); font-size:9px; margin-top:0.3vh; opacity:.55; letter-spacing:.12em">XHLUX · DR 22</div>
-      </div>
+    <!-- 竞品 SEMrush 截图（全部可见） -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8vw; margin-top:0.8vh; flex-shrink:0" data-anim>
+      <div style="text-align:center"><img src="images/vorlane.png" alt="Vorlane" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">VORLANE · DR 52</div></div>
+      <div style="text-align:center"><img src="images/zgsm-china.png" alt="ZGSM" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">ZGSM · DR 48</div></div>
+      <div style="text-align:center"><img src="images/grnled.png" alt="GRNLED" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">GRNLED · DR 35</div></div>
+      <div style="text-align:center"><img src="images/xhlux.png" alt="XHLUX" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">XHLUX · DR 22</div></div>
+      <div style="text-align:center"><img src="images/lsicorp.png" alt="LSI Corp" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">LSI CORP · DR 68</div></div>
+      <div style="text-align:center"><img src="images/lithonia.png" alt="Lithonia" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">LITHONIA · DR 82</div></div>
+      <div style="text-align:center"><img src="images/dialight.png" alt="Dialight" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">DIALIGHT · DR 56</div></div>
+      <div style="text-align:center"><img src="images/usled.png" alt="US LED" style="width:100%; border-radius:4px; display:block"><div style="font-family:var(--mono); font-size:9px; margin-top:0.2vh; opacity:.55">US LED · DR 44</div></div>
     </div>
   </div>
   <div class="foot">
@@ -2264,29 +2247,8 @@ if(motion){
     item.closest('.accordion').querySelectorAll('.acc-item.open').forEach(function(i){ i.classList.remove('open'); });
     if(!wasOpen) item.classList.add('open');
   };
-  /* 竞品截图弹窗 */
-  window.openModal = function(src, label){
-    const overlay = document.getElementById('modal-overlay');
-    const img = overlay.querySelector('img');
-    const lbl = overlay.querySelector('.modal-label');
-    img.src = src;
-    lbl.textContent = label || '';
-    overlay.classList.add('active');
-  };
-  window.closeModal = function(){
-    document.getElementById('modal-overlay').classList.remove('active');
-  };
-
-  playSlide(0);
+	  playSlide(0);
 }
 </script>
-<!-- 竞品截图弹窗 -->
-<div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
-  <div class="modal-wrap" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal()">CLOSE ✕</button>
-    <img src="" alt="竞品截图">
-    <div class="modal-label"></div>
-  </div>
-</div>
 </body>
 </html>
