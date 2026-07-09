@@ -125,12 +125,14 @@
   .slide.dark .acc-item.open{border-color:rgba(61,158,85,.35)}
   .slide.dark .acc-header:hover{background:rgba(61,158,85,.1)}
   .slide.dark .acc-item.open .acc-header{background:rgba(61,158,85,.12)}
+  .slide.dark .tab-btn:hover{background:rgba(61,158,85,.1)}
   .slide.dark .acc-inner{border-top-color:rgba(255,255,255,.08)}
   /* ============ 选项卡 ============ */
   .tab-bar{display:flex;gap:0;margin-bottom:1.5vh;border-bottom:1px solid rgba(127,127,127,.2);flex-shrink:0}
-  .tab-btn{font-family:var(--mono);font-size:max(12px,.82vw);letter-spacing:.12em;padding:.7vh 1.4vw;cursor:pointer;border:none;background:none;color:inherit;opacity:.5;border-bottom:2px solid transparent;transition:opacity .3s,border-color .3s;margin-bottom:-1px}
-  .tab-btn:hover{opacity:.8}
-  .tab-btn.active{opacity:1;border-bottom-color:#3d9e55}
+  .tab-btn{font-family:var(--mono);font-size:max(12px,.82vw);letter-spacing:.12em;padding:.7vh 1.4vw;cursor:pointer;border:none;background:none;color:inherit;opacity:.5;border-bottom:2px solid transparent;transition:opacity .3s,border-color .3s,transform .25s,background .25s;margin-bottom:-1px;border-radius:4px 4px 0 0}
+  .tab-btn:hover{opacity:.85;transform:translateY(-2px);background:rgba(61,158,85,.06)}
+  .tab-btn:active{transform:translateY(0)}
+  .tab-btn.active{opacity:1;border-bottom-color:#3d9e55;transform:translateY(-2px)}
   .tab-panel{display:none;flex:1;min-height:0;overflow-y:auto}
   .tab-panel.active{display:flex;flex-direction:column}
   .tab-panel::-webkit-scrollbar{width:4px}
@@ -2254,6 +2256,17 @@ if(motion){
     // 关闭其他
     item.closest('.accordion').querySelectorAll('.acc-item.open').forEach(function(i){ i.classList.remove('open'); });
     if(!wasOpen) item.classList.add('open');
+  };
+  /* 选项卡切换 */
+  window.switchTab = function(btn, panelId){
+    var bar = btn.closest('.tab-bar');
+    if(!bar) return;
+    bar.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var frame = bar.closest('.frame') || bar.parentElement;
+    frame.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    var target = document.getElementById(panelId);
+    if(target) target.classList.add('active');
   };
 	  playSlide(0);
 }
