@@ -135,6 +135,15 @@
   .slide.dark .acc-header:hover{background:rgba(61,158,85,.1)}
   .slide.dark .acc-item.open .acc-header{background:rgba(61,158,85,.12)}
   .slide.dark .acc-inner{border-top-color:rgba(255,255,255,.08)}
+  /* ============ 选项卡 ============ */
+  .tab-bar{display:flex;gap:0;margin-bottom:1.5vh;border-bottom:1px solid rgba(127,127,127,.2);flex-shrink:0}
+  .tab-btn{font-family:var(--mono);font-size:max(12px,.82vw);letter-spacing:.12em;padding:.7vh 1.4vw;cursor:pointer;border:none;background:none;color:inherit;opacity:.5;border-bottom:2px solid transparent;transition:opacity .3s,border-color .3s;margin-bottom:-1px}
+  .tab-btn:hover{opacity:.8}
+  .tab-btn.active{opacity:1;border-bottom-color:#3d9e55}
+  .tab-panel{display:none;flex:1;min-height:0;overflow-y:auto}
+  .tab-panel.active{display:flex;flex-direction:column}
+  .tab-panel::-webkit-scrollbar{width:4px}
+  .tab-panel::-webkit-scrollbar-thumb{background:rgba(127,127,127,.3);border-radius:2px}
   .label-cell::after{content:"";position:absolute;left:0;bottom:2px;width:0;height:1px;background:currentColor;transition:width .3s ease}
   .label-cell:hover{color:#2d8a4e}
   .label-cell:hover::after{width:100%}
@@ -611,49 +620,60 @@
 </section>
 
 <!-- ================================================================ -->
-<!-- PAGE 3 · 现状诊断 -->
-<section class="slide dark">
+<!-- PAGE 3 · 现状诊断 + SYH LED 网站数据 -->
+<section class="slide dark" id="page-baseline">
   <div class="chrome">
     <div>诊断 · Current Baseline</div>
     <div>04 / 18</div>
   </div>
-  <div class="frame" style="padding-top:4vh">
+  <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>现状 · Current State</div>
-    <h2 class="h-xl" data-anim>从 0 到 1</h2>
-    <p class="lead" style="max-width:60vw; margin-bottom:1vh" data-anim>
-      SYH LED 当前 Authority Score 仅 2，自然关键词几乎为零，属于真正的冷启动阶段。
+    <h2 class="h-xl" data-anim>SYH LED 网站数据</h2>
+    <p class="lead" style="max-width:60vw; margin-bottom:0.5vh" data-anim>
+      Authority Score 仅 2，自然关键词几乎为零，真正的冷启动阶段。
     </p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3vw; flex:1; align-content:center; margin-top:1vh">
-      <!-- 左：现状 -->
-      <div>
-        <div class="grid-4" style="gap:3vh 3vw; padding:0">
-          <div class="stat-card" data-anim>
+    <div class="tab-bar" data-anim>
+      <button class="tab-btn active" onclick="switchTab(this,'panel-core')">核心指标</button>
+      <button class="tab-btn" onclick="switchTab(this,'panel-gaps')">关键缺口</button>
+      <button class="tab-btn" onclick="switchTab(this,'panel-audit')">页面审计</button>
+    </div>
+    <!-- Tab 1: 核心指标 -->
+    <div class="tab-panel active" id="panel-core" data-anim>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2vw; flex:1; align-content:center">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2vh 2vw; align-content:center">
+          <div class="stat-card">
             <div class="stat-label">Organic Keywords</div>
-            <div class="stat-nb" style="font-size:4.2vw">~0</div>
+            <div class="stat-nb" style="font-size:3.8vw">~0</div>
             <div class="stat-note">尚未出词 · 从零起步</div>
           </div>
-          <div class="stat-card" data-anim>
-            <div class="stat-label">Top 2 Pages Keywords</div>
-            <div class="stat-nb" style="font-size:4.2vw">0</div>
+          <div class="stat-card">
+            <div class="stat-label">Top 2 Pages</div>
+            <div class="stat-nb" style="font-size:3.8vw">0</div>
             <div class="stat-note">前 2 页排名关键词</div>
           </div>
-          <div class="stat-card" data-anim>
+          <div class="stat-card">
             <div class="stat-label">Referring Domains</div>
-            <div class="stat-nb" style="font-size:4.2vw">1</div>
-            <div class="stat-note">外链来源域名 · 极少</div>
+            <div class="stat-nb" style="font-size:3.8vw">1</div>
+            <div class="stat-note">外链来源域名</div>
           </div>
-          <div class="stat-card" data-anim>
-            <div class="stat-label">Blog Posts</div>
-            <div class="stat-nb" style="font-size:4.2vw">~0</div>
-            <div class="stat-note">博客 / 内容文章</div>
+          <div class="stat-card">
+            <div class="stat-label">Authority Score</div>
+            <div class="stat-nb" style="font-size:3.8vw">2</div>
+            <div class="stat-note">SEMrush AS · 极低</div>
           </div>
         </div>
+        <div style="display:flex; flex-direction:column; justify-content:center; align-items:center">
+          <img src="images/syhledray.com.png" alt="SYH LED 网站" style="width:90%; border-radius:6px; display:block; box-shadow:0 8px 32px rgba(0,0,0,.3)">
+          <div class="frame-cap" style="margin-top:0.6vh"><span class="pf">syhledray.com · 当前首页</span></div>
+        </div>
       </div>
-      <!-- 右：问题 -->
-      <div style="display:flex; flex-direction:column; gap:1.8vh; justify-content:center">
-        <div class="callout" data-anim>
-          <div class="q-big">关键缺口</div>
-          <div class="cite" style="margin-top:1.4vh; text-transform:none; font-family:var(--sans-zh); font-size:max(14px,1.05vw); letter-spacing:0; opacity:.85; line-height:1.7">
+    </div>
+    <!-- Tab 2: 关键缺口 -->
+    <div class="tab-panel" id="panel-gaps">
+      <div style="display:flex; flex-direction:column; gap:1.8vh; justify-content:center; flex:1">
+        <div class="callout" style="flex:none">
+          <div class="q-big" style="font-size:max(16px,1.3vw)">关键缺口</div>
+          <div class="cite" style="margin-top:1.2vh; text-transform:none; font-family:var(--sans-zh); font-size:max(14px,0.95vw); letter-spacing:0; opacity:.85; line-height:1.65">
             • SEMrush Authority Score 仅 2，域名权重极低<br>
             • 自然搜索关键词不可用，尚未被 Google 赋予排名<br>
             • 站点内容稀缺，无法支撑搜索引擎理解业务主题<br>
@@ -662,6 +682,44 @@
             • 外链极少，需从零建设<br>
             • 品牌搜索量为 0，品牌认知度需从零建立
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tab 3: 页面审计 -->
+    <div class="tab-panel" id="panel-audit">
+      <div style="display:flex; flex-direction:column; gap:1.4vh; justify-content:center; flex:1">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5vh 2vw">
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">总页面数</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#e67e22">~15</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">含测试页、占位页</div>
+          </div>
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">B2B 分类页</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#c0392b">~3</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">严重不足</div>
+          </div>
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">应用场景页</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#c0392b">~0</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">需新建</div>
+          </div>
+          <div class="stat-card" style="padding:1.2vh 1.2vw">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <span class="stat-label" style="font-size:max(12px,.85vw)">博客/内容</span>
+              <span class="stat-nb" style="font-size:2.2vw; color:#c0392b">~0</span>
+            </div>
+            <div class="stat-note" style="font-size:max(11px,.75vw)">内容体系空白</div>
+          </div>
+        </div>
+        <div style="font-family:var(--sans-zh); font-size:max(13px,.85vw); opacity:.7; line-height:1.6; text-align:center; padding:0.5vh 0">
+          需要清理测试页、重复页、内容不匹配页面，重建 B2B 产品分类结构
         </div>
       </div>
     </div>
