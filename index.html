@@ -1359,62 +1359,22 @@
     <h2 class="h-xl" data-anim>B2B 关键词 · 国家分布</h2>
     <p class="lead" style="max-width:60vw; margin-bottom:0.2vh" data-anim>搜索集中在北美、南亚和中东市场，指导广告投放和内容本地化优先级</p>
     <div class="split-55" style="flex:1; gap:1.5vw; min-height:0; align-content:center" data-anim>
-      <!-- 左侧：国家分布列表 -->
-      <div style="display:flex; flex-direction:column; justify-content:center; gap:0.3vh">
-        <div class="country-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:0.3vh 1vw">
-          <div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇺🇸 美国</div>
-              <div class="stat-nb" style="font-size:2.8vw; color:#2d8a4e">32%</div>
-              <div class="stat-note">最大单一市场</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇮🇳 印度</div>
-              <div class="stat-nb" style="font-size:2.8vw; color:#3d9e55">14%</div>
-              <div class="stat-note">快速增长市场</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇬🇧 英国</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.7">9%</div>
-              <div class="stat-note">成熟 B2B 市场</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18); padding-top:0.6vh; gap:0">
-              <div class="stat-label" style="font-size:max(10px,.65vw)">🇨🇦 加拿大</div>
-              <div class="stat-nb" style="font-size:2vw; line-height:1.1; opacity:.7">6%</div>
-              <div class="stat-note" style="font-size:max(11px,.75vw); margin-top:0">工程采购需求稳定</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇦🇺 澳大利亚</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.7">5%</div>
-              <div class="stat-note">矿业/工业照明需求</div>
-            </div>
+      <!-- 左侧：国家分布列表（紧凑单行布局） -->
+      <div style="display:flex; flex-direction:column; justify-content:center; gap:0.4vh">
+        <div class="cgrid">
+          <div class="cgrp">
+            <div class="crow"><span class="cflag">🇺🇸</span><span class="cnm">美国</span><span class="cpct" style="color:#2d8a4e">32%</span><span class="cnote">最大单一市场</span></div>
+            <div class="crow"><span class="cflag">🇮🇳</span><span class="cnm">印度</span><span class="cpct" style="color:#3d9e55">14%</span><span class="cnote">快速增长市场</span></div>
+            <div class="crow"><span class="cflag">🇬🇧</span><span class="cnm">英国</span><span class="cpct">9%</span><span class="cnote">成熟 B2B 市场</span></div>
+            <div class="crow"><span class="cflag">🇨🇦</span><span class="cnm">加拿大</span><span class="cpct">6%</span><span class="cnote">工程采购需求稳定</span></div>
+            <div class="crow"><span class="cflag">🇦🇺</span><span class="cnm">澳大利亚</span><span class="cpct">5%</span><span class="cnote">矿业/工业照明需求</span></div>
           </div>
-          <div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇩🇪 德国</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.7">4%</div>
-              <div class="stat-note">欧洲工程标准需求</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇦🇪 阿联酋</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.7">3%</div>
-              <div class="stat-note">中东项目采购枢纽</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇸🇦 沙特</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.7">3%</div>
-              <div class="stat-note">基建 Vision 2030</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🇵🇭 菲律宾</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.7">2%</div>
-              <div class="stat-note">东南亚新兴市场</div>
-            </div>
-            <div class="stat-card" style="border-top-color:rgba(13,31,20,.18)">
-              <div class="stat-label">🌍 其他</div>
-              <div class="stat-nb" style="font-size:2.8vw; opacity:.5">22%</div>
-              <div class="stat-note">全球分散需求</div>
-            </div>
+          <div class="cgrp">
+            <div class="crow"><span class="cflag">🇩🇪</span><span class="cnm">德国</span><span class="cpct">4%</span><span class="cnote">欧洲工程标准需求</span></div>
+            <div class="crow"><span class="cflag">🇦🇪</span><span class="cnm">阿联酋</span><span class="cpct">3%</span><span class="cnote">中东项目采购枢纽</span></div>
+            <div class="crow"><span class="cflag">🇸🇦</span><span class="cnm">沙特</span><span class="cpct">3%</span><span class="cnote">基建 Vision 2030</span></div>
+            <div class="crow"><span class="cflag">🇵🇭</span><span class="cnm">菲律宾</span><span class="cpct">2%</span><span class="cnote">东南亚新兴市场</span></div>
+            <div class="crow"><span class="cflag">🌍</span><span class="cnm">其他</span><span class="cpct" style="opacity:.6">22%</span><span class="cnote">全球分散需求</span></div>
           </div>
         </div>
         <div class="callout" style="margin-top:0.3vh; padding:0.8vh 1.2vw; font-size:max(12px,.82vw); border-left-color:#2d8a4e">
@@ -1439,10 +1399,13 @@
   </div>
 </section>
 <style>
-.country-grid .stat-card{padding-top:0.6vh;gap:0.2vh}
-.country-grid .stat-label{font-size:max(10px,.65vw)}
-.country-grid .stat-nb{font-size:2vw;line-height:1.1}
-.country-grid .stat-note{font-size:max(11px,.78vw);margin-top:0}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:0.3vh 1.2vw}
+.cgrp{display:flex;flex-direction:column;gap:0.4vh}
+.crow{display:grid;grid-template-columns:auto auto 1fr auto;gap:0.3vw 0.4vw;align-items:baseline;padding:0.3vh 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)}
+.cflag{font-size:max(14px,.9vw)}
+.cnm{font-family:var(--sans-zh);font-weight:600;font-size:max(12px,.78vw);white-space:nowrap}
+.cpct{font-family:var(--serif-en);font-weight:800;font-size:max(14px,1.1vw);letter-spacing:-.02em;font-feature-settings:"tnum";justify-self:end}
+.cnote{font-family:var(--sans-zh);font-size:max(10px,.68vw);opacity:.65;text-align:right}
 </style>
 
 <!-- ================================================================ -->
